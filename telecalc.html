@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" https-equiv="Content-Type" />
+<link rel="shortcut icon" href="" />
+<link rel="stylesheet" type="text/css" href="niftyCorners.css"/>
+<link rel="stylesheet" type="text/css" href="niftyPrint.css" media="print"/>
+<script type="text/javascript" src="nifty.js"></script>
+
+</head>
+
+<title>Telescópios - TeleCalc</title>
+
+<style type="text/css">
+
+<!--
+@import url('font-awesome.min.css');
+-->
+
+/*********************************
+Inicio: Barra CSS
+*********************************/
+
+*{
+	margin:0;
+	padding:0;
+}
+
+#main{
+	width:900px;
+	background:#FFF;
+	margin:0  auto;
+	height: auto;
+	position: inherit;
+    top: 0px;
+}
+
+#footer2{
+	height:270px;
+	line-height: normal;
+	background: #F1F2F6;
+	position: relative;
+	top:0x;
+}
+
+/*********************************
+FIM: Barra CSS
+*********************************/
+
+
+
+body {
+margin: 0;
+padding: 0px;
+background: #DFE4E8; 
+
+color: #666;
+}
+
+h1 {
+font: bold 16px Verdana, Arial, Helvetica, sans-serif;
+}
+
+p {
+font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+a {
+color: gray; 
+text-decoration:none
+}
+
+#geral{
+	width:800px;
+	margin:0;
+	padding:0;
+}
+
+p.conteudo { font: 14px "Verdana"; color: black; font-weight }
+L.link{text-decoration:none; }
+A.menu {  font-family: Arial, Helvetica, sans-serif; font-size:10px; font-style: normal; color: #0080C0; text-decoration: none; font-size: 11px}
+</style>
+
+<style type="text/css">  
+A.menu {  font-family: Arial, Helvetica, sans-serif; font-size:10px; font-style: normal; color: #0080C0; text-decoration: none; font-size: 11px}
+p.destaque { font: 12px "Verdana"; color: black; font-weight: }
+p.destaque2 { font: 12px "Verdana"; color:#48718E; font-weight }
+p.esquerda { font: 12px "Verdana"; color: #000000; font-weight }
+p.titulo { font: 23px "Verdana"; color: black; font-weight }
+p.subtitulo { font: 20px "Verdana"; color: black; font-weight }
+p.titulopagina { font: 56px "Verdana";   color: white; font-weight }
+p.titulopagina2 { font: 20px "Verdana";  color: white; font-weight }
+p.tituloprincipal { font: 16px "Arial"; color: gray; font-weight: bold }
+p.tituloesquerda { font: 12px "Arial"; color: #0080C0; text-decoration: none; font-weight: bold }
+p.importante { font: 12px "Verdana"; color: gray; font-weight }
+p.titulomenuinf { font: 15px "Verdana"; color: black; font-weight }
+p.menuinf { font: 13px "Verdana"; color: gray; font-weight }
+.style1 { background-color: #FFFFFF;
+}
+
+</style>
+
+
+<STYLE TYPE="text/css" >
+ .limpar    
+	 { 
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color:white;
+    font-size: 11pt;
+    font-weight: normal; 
+    text-align: center;
+    background:  #48718E;
+    border-right:0px solid #0080C0;
+    border-left:0px solid #D2D2FF; 
+    border-top:0px solid #D2D2FF; 
+    border-bottom:0px solid #0080C0;
+    }
+
+.calcular
+	 { 
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   color:white;
+    font-size: 10pt;
+    font-weight: bold; 
+    text-align: center;
+    background: #48718E;
+    border-right:0px solid #0080C0;
+    border-left:0px solid #D2D2FF; 
+    border-top:0px solid #D2D2FF; 
+    border-bottom:0px solid #0080C0;
+    }
+ .input
+{
+	font-family: Verdana, Quartz,Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    text-transform: lowercase; 
+    letter-spacing: 1px; 
+    word-spacing: 1pt; 
+    vertical-align: baseline;
+    text-align: left;
+    background: white
+}
+
+</STYLE> 
+
+<script language="JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function cria_array_foco(n){
+		this.length=n;
+		for (var i=1; i<=n; i++){
+			this[i]="";
+		}
+  }
+		
+	function formatDecimal(argvalue, addzero, decimaln) {
+  		var numOfDecimal = (decimaln == null) ? 2 : decimaln;
+    	var number = 1;
+  	number = Math.pow(10, numOfDecimal);
+  	argvalue = Math.round(parseFloat(argvalue) * number) / number;
+  // If you're using IE3.x, you will get error with the following line.
+  // argvalue = argvalue.toString();  // It works fine in IE4.
+  	argvalue = "" + argvalue;
+    if (argvalue.indexOf(".") == 0)
+   		 argvalue = "0" + argvalue;
+		   if (addzero == true) {
+    			if (argvalue.indexOf(".") == -1)
+				      argvalue = argvalue + ".";
+    				  while ((argvalue.indexOf(".") + 1) > (argvalue.length - numOfDecimal))
+      					argvalue = argvalue + "0";  
+						}  
+			return argvalue;
+	}
+		
+	f=new cria_array_foco(8);
+	f[1]=6;
+	f[2]=10;
+	f[3]=12;
+	f[4]=15;
+	f[5]=20;
+	f[6]=25;
+	f[7]=32;
+	f[8]=40
+	var c1=50;
+	var c2=60;
+	var c3=45;
+	function calcula (form){
+		
+		var aumento;
+		var ml;
+		var amax;
+		var amin;
+		var rf;
+		var ps;
+		var mlr;
+		var base_10=Math.LN10
+		var Dcm;
+		var cl;
+		var c2;
+		var c3;
+		Dcm=form.D.value/10; 
+		cl=Math.log(Dcm)/base_10;
+		ps=120/form.D.value;
+		ml=7.1+5*cl;
+		amax=form.D.value*2.5;
+		amin=(Dcm)*1.5;
+		rf=form.F.value/form.D.value;
+		
+		 var ifrm = document.getElementById('myIframe');
+         ifrm = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+         ifrm.document.open();
+		 ifrm.document.write( '<html><head><title>Resultados</title>');
+		 ifrm.document.write('<body>');
+		 ifrm.document.write('<form>');
+		 ifrm.document.write('<table border=0 width="530" height=340><tr BGCOLOR="#48718E" ><td colspan="5">');
+		 ifrm.document.write('<font face="Verdana" size="2" color="white">&nbsp;Diâmetro do espelho primário =  '+ form.D.value+' mm </font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Distância focal do espelho primario = '+ form.F.value+' mm </font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Aumento máximo = '+formatDecimal(amax,2,true)+' X </font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Aumento minimo = '+formatDecimal(amin,2,true)+' X </font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Razão focal = '+ formatDecimal(rf,2,true)+ '</font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Poder separador = '+formatDecimal(ps,2,true)+' sec. arco </font>');
+		 ifrm.document.write('<br><font face="Verdana" size="2" color="white">&nbsp;Magnitude limite = '+formatDecimal(ml,2,true)+ '</font>');
+		 ifrm.document.write('<br></td></tr>');
+		 ifrm.document.write('<tr bgcolor="#BCD4ED" width="100px" ><td align="center" style="width: 75px" ><font face="Verdana" size="2" color="black">Ocular<br/>(D. focal)</font></td><td align="center" style="width: 70px"><font face="Verdana" size="2" color="black">Aumento <br>(em X)</font></td><td align="center" style="width: 105px"><font face="Verdana" size="2" color="black">Campo visual<br>(Kellner 45º)</font></td><td align="center" style="width: 100px"><font face="Verdana" size="2" color="black">Campo visual<br>(Plossl 50º)</font></td><td align="center" style="width: 99px"><font face="Verdana" size="2" color="black">Campo visual <br>(Erfle 60º)</font></td></tr>');	
+		for (var x=1; x<=8; x++){
+		 aumento=formatDecimal((form.F.value/f[x]),2,true);
+		 c33=45/aumento;
+		 c45=50/aumento;
+		 c50=60/aumento;
+		 result_c33=formatDecimal(c33,true,3)
+		 result_c45=formatDecimal(c45,true,3);
+		 result_c50=formatDecimal(c50,true,3);
+		 ifrm.document.write('<tr bgcolor="#E4EEF8"><td align="center" style="font-family:Verdana size=2" >'+ f[x]+ ' mm</td><td  align="center" style="font-family:Verdana size=2">'+ aumento+ ' X</td><td  align="center" style="font-family:Verdana size=2" >'+result_c33+' º</td><td  align="center" style="font-family:Verdana size=2">'+result_c45+'º</td><td  align="center" style="font-family:Verdana size=2">'+result_c50+'º</td></tr>');	
+		 }
+		
+		 ifrm.document.write('</table></form>'); 
+	 }
+	
+	function limpa_form(form){
+		form.D.value="";
+		form.F.value="";
+		  	}
+			
+	function isNum(entry){
+	var str=entry.value;
+	for (var i=0; i < str.length; i++){
+		var ch=str.substring(i,i+1)
+		if ((ch < "0" || "9" < ch )&& ch != '.'){
+			alert("Você entrou com um caracter inválido.");
+			entry.value=0;
+			entry.focus()
+			entry.select()
+	   }
+	  }
+  	}
+	
+</script>
+
+<SCRIPT TYPE="text/javascript" LANGUAGE="javascript">
+
+</script>
+
+<body>
+
+<div id="main" align="center" style="width: 860px">
+
+ 
+ 
+ 
+		 <table cellpadding="0" cellspacing="0" style="width: 860px" bgcolor="#ECEFF2">
+			<tr> <td height="30px">
+					
+				<table cellpadding="0" cellspacing="0" style="width: 848px">
+					<tr>
+						<td bgcolor="#ECEFF2" width="490">
+												
+						<table cellpadding="0" cellspacing="0" style="width: 300px"  >
+		<tr valign="top"> <td height="385px" style="width: 300px">
+		
+		<div id="Layer1" style="position: inherit; left:90px; top:7px; width:221px; height:1px; z-index:1" >
+ 	 
+</div> 
+
+  <table cellpadding="0" cellspacing="0" style="width: 215px">
+		<tr>
+			<td width="10px"></td>
+			<td align="left" ><p style="height:15px"></p><font face="Verdana" size="55" color="#BECCD8">TeleCalc</font></td>
+		     </tr> </table> <p style="height:70px"></p>
+
+<div id="Layer3" style="position: inherit; left:378px; top:95px; width:300px; height:30px; z-index:3" >
+   
+ <map name="Map"><form NAME="calc">
+  
+ 	<table cellpadding="0" cellspacing="0" style="width: 300px">
+		<tr>
+			<td height="15"><p class="conteudo2" style="width:185px" align="left">&nbsp;&nbsp;Diâmetro do primário</p> </td>
+			<td><input  NAME="D" type="text" size="7" maxlength="6" value="" ONCHANGE="isNum(this)" CLASS="input" style="width:85px; height:18px" /></td>
+		</tr>
+		<tr><td><p style="height:20px"></p></td></tr>
+		<tr>
+			<td><p class="conteudo2" style="width:185px" align="left" >&nbsp;&nbsp;Distância focal do primário</p></td>
+			<td><input  NAME="F" type="text" size="7" maxlength="6" value="" ONCHANGE="isNum(this)" CLASS="input" style="width:85px; height:18px" />
+						
+			</td> </tr> </table>
+  
+<div id="Layer3" style="position: inherit; left:-105px; top:187px; width:292px; height:30px; z-index:2"><p style="height:23px"></p>
+    
+                <table cellpadding="0" cellspacing="0">
+			    <tr>
+				<td><p class="destaque2" align="left" >&nbsp;&nbsp;(Valores em milímetro - mm)</p></td>
+				
+				<td width="17"></td>
+				
+				<td width="87" height="20px" bgcolor="#48718E" align="center"><INPUT TYPE="button" VALUE="Calcular" ONCLICK="calcula(this.form)" class="calcular" /></td>
+			    </tr> </table>
+</div> 
+</form> </map>
+</div>
+			
+		</td> </tr> </table>
+													
+				 </td>																	
+						<td>
+						
+						<table cellpadding="0" cellspacing="0" >
+				   <tr> <td> <iframe id="myIframe"  width="545" height="355" scrolling="no" frameborder="0" style="background-color:white"  ></iframe> </td> </tr> </table>
+						
+						</td></tr></table>
+											
+				        </td> </tr> </table> 
+		
+
+<!--Fim tabela conteudo, texto, imagens e etc  --> 
+
+</div>
+
+<!-- FIM: da tabela principal -->
+
+  
+   
+   
+
+</body> </html>
